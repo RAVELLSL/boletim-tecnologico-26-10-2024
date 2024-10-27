@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim Tecnológico</title>
+    <style>
+        body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7; /* Fundo claro */
+    color: #333; /* Texto em cinza escuro */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #333, #000); /* Degradê cinza escuro para preto */
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.edition-info {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin: 15px 0; /* Espaçamento entre o cabeçalho e a primeira seção */
+}
+
+
+.section-title {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.main-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Três cards por linha */
+    gap: 20px; /* Espaçamento entre os cards */
+    margin: 30px 0;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Seção especial para Inovação Tecnológica */
+.innovation-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Configura dois cards lado a lado */
+    gap: 20px;
+    justify-content: center; /* Centraliza os cards */
+    margin: 30px 0;
+}
+
+/* Estilos para os modais */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 60%;
+    height: 80%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #333;
+}
+
+.modal-content img {
+    width: 80%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.modal-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #333;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Estilos responsivos */
+@media (max-width: 1024px) {
+    .main-section {
+        grid-template-columns: repeat(2, 1fr); /* Ajuste para 2 cards por linha em telas menores */
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+
+    .innovation-section {
+        grid-template-columns: 1fr; /* Mostra os cards em uma coluna em telas menores */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-section {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards por linha em tablets */
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-section {
+        grid-template-columns: 1fr; /* 1 card por linha em dispositivos pequenos */
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Boletim Tecnológico</h1>
+</header>
+
+<!-- Informações da edição -->
+<div class="edition-info">
+    <p>Edição de 26/10/2024</p>
+</div>
+
+<!-- Seção Inteligência Artificial (com 6 cards) -->
+<h2 class="section-title">Inteligência	Artificial</h2>
+<div class="main-section">
+    <div class="card" id="card1">
+        <img src="https://t.ctcdn.com.br/YkSMbHOgwc5_Sukrl9hStKhS26k=/1024x576/smart/i708004.jpeg" alt="Imagem IA Claude">
+        <h2>IA Claude agora pode controlar seu PC para tarefas específicas</h2>
+    </div>
+    
+    <div class="card" id="card2">
+        <img src="https://t.ctcdn.com.br/esy2Dw0PIf0sm3dLRBIlRNuFjZk=/1024x576/smart/i904095.jpeg" alt="Imagem IA Médica">
+        <h2>Cientistas usam IA para editar DNA com precisão inédita</h2>
+    </div>
+    
+    <div class="card" id="card3">
+        <img src="https://t.ctcdn.com.br/mBPKVf7DaVdU3N6zyEZKZbXdNTU=/1024x576/smart/i783864.jpeg" alt="Imagem Atestado Digital">
+        <h2>Atestados médicos terão validação digital a partir de novembro</h2>
+    </div>
+
+    <div class="card" id="card4">
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/10/Captura-de-tela-2024-10-24-113502.png" alt="Imagem Apresentadores IA">
+        <h2>Rádio polonesa substitui jornalistas por apresentadores gerados por IA</h2>
+    </div>
+
+    <div class="card" id="card5">
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/10/intel1.jpg" alt="Imagem Intel e IA">
+        <h2>Intel fica para trás na corrida das IAs: como isso aconteceu?</h2>
+    </div>
+
+    <div class="card" id="card6">
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/07/Destaque-Google-Gemini-Grande-1920x1080.jpg" alt="Imagem Gemini 2.0">
+        <h2>Google planeja lançar Gemini 2.0 até o final de 2024</h2>
+    </div>
+</div>
+
+<!-- Modais para cada card -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>IA Claude agora pode controlar seu PC para tarefas específicas</h2>
+        <img src="https://t.ctcdn.com.br/YkSMbHOgwc5_Sukrl9hStKhS26k=/1024x576/smart/i708004.jpeg" alt="Imagem IA Claude">
+        <p>
+            A Anthropic anunciou a nova API do modelo de Inteligência Artificial Claude, introduzida para automatizar tarefas no computador por meio de comandos inseridos pelos usuários. Apresentada em 22 de outubro, a API oferece aos desenvolvedores a capacidade de executar funções como preenchimento automático de formulários, usando dados do computador e da web.
+        </p>
+        <p>
+            A novidade acompanha a atualização do Claude 3.5 Sonnet, que se destaca por melhorias de desempenho, e o lançamento do Claude 3.5 Haiku, focado em maior velocidade. Embora ainda em fase beta, a API promete facilitar a interação com o PC, permitindo que a IA assuma o controle do mouse e teclado para realizar ações automatizadas.
+        </p>
+        <p>
+            <strong>Como funciona a automação</strong><br>
+            Durante uma demonstração, o Claude 3.5 capturou a tela para analisar informações e, em seguida, inseriu dados automaticamente em um formulário. O processo foi descrito em tempo real pelo chatbot, destacando a capacidade de interação avançada do modelo com o sistema operacional.
+        </p>
+        <p>
+            Em testes conduzidos no OSWorld, que avalia o desempenho de IAs em simular ações humanas no computador, o Claude 3.5 Sonnet obteve 14,9% de sucesso na categoria de captura de tela, superando a pontuação de 7,8% do segundo melhor sistema.
+        </p>
+        <p>
+            <strong>Desafios e segurança</strong><br>
+            Apesar dos avanços, a Anthropic reconhece limitações, como a dificuldade em ações como rolar, arrastar e aplicar zoom. A empresa recomenda que os desenvolvedores comecem com tarefas de baixo risco enquanto a tecnologia evolui.
+        </p>
+        <p>
+            Preocupada com segurança, a Anthropic implementou classificadores para monitorar o uso do computador e evitar possíveis abusos, garantindo uma implantação segura dessa inovação.
+        </p>
+    </div>
+</div>
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Cientistas usam IA para editar DNA com precisão inédita</h2>
+        <img src="https://t.ctcdn.com.br/esy2Dw0PIf0sm3dLRBIlRNuFjZk=/1024x576/smart/i904095.jpeg" alt="Imagem IA Médica">
+        <p>
+            Cientistas avançaram no campo da edição genética com o auxílio da inteligência artificial, descobrindo como ativar ou suprimir genes de forma precisa em diferentes tipos de células. Essa descoberta abre caminho para tratamentos mais eficazes de doenças hereditárias, permitindo o controle exato da expressão genética no corpo humano.
+        </p>
+        <p>
+            A pesquisa, liderada por cientistas do The Jackson Laboratory (JAX), MIT, Yale e Harvard, foi publicada na revista Nature em 23 de outubro. Utilizando uma IA de aprendizado profundo, chamada CODA (Otimização Computacional da Atividade do DNA), os pesquisadores projetaram estruturas conhecidas como elementos cis-regulatórios (CREs). Esses "interruptores do DNA" controlam a ativação de genes em tecidos específicos, algo que antes não podia ser feito com tamanha precisão.
+        </p>
+        <p>
+            <strong>Como os CREs funcionam</strong><br>
+            Os CREs são sequências de DNA que regulam o desenvolvimento celular, garantindo que genes específicos atuem somente onde e quando são necessários. Antes dessa inovação, a edição genética era menos direcionada, afetando o organismo de maneira mais generalizada.
+        </p>
+        <p>
+            Com o auxílio da IA, os cientistas puderam analisar milhares de sequências de DNA e identificar padrões ocultos, acelerando o processo de modificação dos CREs. Testes com peixes-zebra e camundongos mostraram resultados promissores, com um CRE ativando proteínas fluorescentes apenas em fígados de peixes-zebra em desenvolvimento, demonstrando o potencial de aplicação direcionada.
+        </p>
+        <p>
+            <strong>IA e edição genética</strong><br>
+            A IA foi treinada para identificar e atuar em células de sangue, fígado e cérebro, permitindo prever a atividade genética a partir de combinações de DNA praticamente infinitas. A descoberta marca um avanço significativo para o desenvolvimento de terapias genéticas mais específicas e eficazes, reduzindo o risco de efeitos colaterais indesejados.
+        </p>
+        <p>
+            Esse avanço reforça a importância da IA no campo da biotecnologia, viabilizando novas formas de tratamento personalizado e abrindo portas para a edição de genes de maneira mais segura e eficiente.
+        </p>
+    </div>
+</div>
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Atestados médicos terão validação digital a partir de novembro</h2>
+        <img src="https://t.ctcdn.com.br/mBPKVf7DaVdU3N6zyEZKZbXdNTU=/1024x576/smart/i783864.jpeg" alt="Imagem Atestado Digital">
+        <p>
+            A partir de novembro, os atestados médicos no Brasil passarão por uma grande transformação com a implementação da plataforma Atesta CFM, coordenada pelo Conselho Federal de Medicina (CFM). Essa mudança, regulamentada pela Resolução CFM nº 2.382/24, tem como objetivo combater fraudes e irregularidades, centralizando a emissão de atestados médicos em um sistema digital.
+        </p>
+        <p>
+            <strong>Como funcionará o novo sistema</strong><br>
+            Todos os atestados médicos, incluindo os de saúde ocupacional, afastamento e acompanhamento, serão emitidos através da plataforma Atesta CFM. Médicos, pacientes e empresas poderão acessar os documentos digitalmente, e, se autorizado pelo paciente, os dados serão compartilhados diretamente com os empregadores, eliminando a necessidade de papéis físicos.
+        </p>
+        <p>
+            A plataforma será lançada no dia 5 de novembro, mas sua obrigatoriedade começa em 5 de março de 2025. Aplicativos para Android e iOS estarão disponíveis para facilitar o acesso e a gestão dos documentos.
+        </p>
+        <p>
+            <strong>O que muda para médicos e pacientes</strong><br>
+            Com a validação digital, os atestados conterão informações obrigatórias, como a identificação completa do médico, o CRM, o tempo de afastamento e um código de autenticação. O CID (Classificação Internacional de Doenças) será incluído apenas se o paciente autorizar, garantindo a privacidade conforme a Lei Geral de Proteção de Dados (LGPD).
+        </p>
+        <p>
+            Em locais sem acesso à internet, atestados poderão ser emitidos manualmente em blocos impressos pelo sistema, com códigos de segurança para autenticação posterior.
+        </p>
+        <p>
+            Com essa digitalização, o processo de emissão e verificação de atestados médicos promete se tornar mais seguro e prático, tanto para profissionais de saúde quanto para pacientes e empresas.
+        </p>
+    </div>
+</div>
+
+<div id="modal4" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Rádio polonesa substitui jornalistas por apresentadores gerados por IA</h2>
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/10/Captura-de-tela-2024-10-24-113502.png" alt="Imagem Apresentadores IA">
+        <p>
+            A rádio pública OFF Radio Krakow, na Polônia, anunciou a demissão de seus jornalistas e a substituição por apresentadores gerados por inteligência artificial. A emissora lançou três avatares virtuais que abordarão temas culturais, artísticos e sociais, como questões LGBTQ+, com foco no público jovem.
+        </p>
+        <p>
+            De acordo com Marcin Pulit, chefe da estação, o experimento busca explorar o impacto da IA no jornalismo, embora ele tenha afirmado que as demissões não foram causadas pela nova tecnologia, mas sim pela baixa audiência.
+        </p>
+        <p>
+            <strong>Polêmica e protestos</strong><br>
+            A decisão gerou controvérsia e protestos entre profissionais do setor. Uma petição contra o uso de IA para substituir jornalistas foi assinada por mais de 15 mil pessoas. Mateusz Demski, um dos jornalistas demitidos, liderou o movimento, classificando a decisão como um “precedente perigoso” para o mercado de trabalho nas indústrias criativas.
+        </p>
+        <p>
+            O vice-primeiro-ministro polonês, Krzysztof Gawkowski, também se manifestou contra a mudança, pedindo regulamentação do uso de IA e afirmando que esse tipo de inovação deve ser feito para beneficiar as pessoas, não substituí-las.
+        </p>
+        <p>
+            <strong>Apresentadores virtuais e suas especializações</strong><br>
+            Os avatares da emissora têm áreas de atuação específicas. Jakub "Kuba" Zieliński, de 22 anos, foca em tecnologia e música; Emília "Emi" Nowak, de 20 anos, cobre cultura pop; e Alex Szulc, de 23 anos, é formado em psicologia e atua em temas de envolvimento social. A rádio afirma que o projeto ainda está em fase de "experimento" com IA.
+        </p>
+    </div>
+</div>
+
+<div id="modal5" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Intel fica para trás na corrida das IAs: como isso aconteceu?</h2>
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/10/intel1.jpg" alt="Imagem Intel e IA">
+        <p>
+            A Intel, gigante da tecnologia, enfrenta dificuldades para acompanhar a revolução da inteligência artificial, enquanto concorrentes, como a Nvidia, crescem rapidamente. A situação da Intel pode ser rastreada até uma decisão crucial tomada em 2005, quando seu conselho rejeitou a proposta de adquirir a Nvidia, então uma empresa emergente de chips gráficos. Hoje, a Nvidia lidera o mercado de IA, enquanto a Intel luta para recuperar sua relevância.
+        </p>
+        <p>
+            <strong>Oportunidade perdida e dificuldades recentes</strong><br>
+            Na época, a Intel optou por não seguir com a aquisição da Nvidia, preocupada com o alto custo e um histórico de aquisições malsucedidas. Desde então, a Nvidia se tornou essencial no mercado de IA, com um valor de mercado superior a US$ 3 trilhões. Em contraste, a Intel, que recentemente demitiu 15 mil funcionários e viu sua receita despencar mais de 30% entre 2021 e 2023, está avaliada em menos de US$ 100 bilhões.
+        </p>
+        <p>
+            A insistência da Intel em priorizar sua linha de chips x86 e sua falha em inovar no setor de IA resultaram em uma série de projetos fracassados, como o Larrabee. Mesmo após a aquisição de empresas como a Nervana Systems, a Intel não conseguiu construir uma presença forte no mercado de IA.
+        </p>
+        <p>
+            <strong>Desafios à frente</strong><br>
+            Sob a liderança de Patrick Gelsinger, a Intel busca se reerguer, investindo em tecnologia de fabricação e novos chips. No entanto, a maioria desses chips ainda depende de fabricantes terceirizados, como a TSMC, e a empresa reconhece que está atrás na corrida pela supremacia em IA, onde a Nvidia continua a dominar.
+        </p>
+        <p>
+            Agora, a Intel tenta explorar novas oportunidades em data centers, onde já tem uma presença significativa, mas a competição segue intensa e a recuperação promete ser desafiadora.
+        </p>
+        <p>
+            Com a rápida evolução do mercado de IA, a Intel enfrenta uma difícil jornada para se posicionar como uma concorrente relevante, enquanto a Nvidia solidifica sua liderança.
+        </p>
+    </div>
+</div>
+
+<div id="modal6" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Google planeja lançar Gemini 2.0 até o final de 2024</h2>
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/07/Destaque-Google-Gemini-Grande-1920x1080.jpg" alt="Imagem Gemini 2.0">
+        <p>
+            O Google está se preparando para lançar o Gemini 2.0, sua próxima geração de inteligência artificial, ainda em dezembro de 2024, segundo informações divulgadas pelo The Verge. A empresa pretende disponibilizar amplamente o modelo logo no lançamento, em uma estratégia que parece competir diretamente com a OpenAI, que também planeja introduzir uma IA avançada no mesmo período.
+        </p>
+        <p>
+            <strong>OpenAI nega lançamento de "super IA" em 2024</strong><br>
+            Apesar das especulações sobre o lançamento de uma IA chamada Orion pela OpenAI, o CEO Sam Altman desmentiu as informações, classificando-as como "fake news". A OpenAI afirma não ter planos para lançar Orion em 2024, mas promete outras inovações tecnológicas ainda neste ano.
+        </p>
+        <p>
+            Com a corrida pela liderança no mercado de IA se intensificando, tanto Google quanto OpenAI buscam consolidar suas posições, enquanto novos modelos prometem trazer avanços significativos na tecnologia.
+        </p>
+    </div>
+</div>
+        
+    
+
+<div class="container">
+    <!-- Seção Inovação Tecnológica (com 2 cards) -->
+    <h2 class="section-title">Inovação Tecnológica</h2>
+    <div class="innovation-section">
+        <div class="card" id="card1">
+            <img src="https://spacetoday.com.br/wp-content/uploads/2023/06/computador_quantico_02.jpg" alt="Imagem Computação Quântica">
+            <h2>Computação Quântica e Criptografia: Avanços, Desafios e Impactos Futuros</h2>
+        </div>
+
+        <div class="card" id="card2">
+            <img src="https://www.estudarfora.org.br/wp-content/uploads/2017/10/FE-EF-30.jpg" alt="Imagem Trilema Energético">
+            <h2>"Trilema energético" é desafio global e Brasil pode ser parte da solução</h2>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal do primeiro card -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Computação Quântica e Criptografia: Avanços, Desafios e Impactos Futuros</h2>
+        <img src="https://spacetoday.com.br/wp-content/uploads/2023/06/computador_quantico_02.jpg" alt="Imagem Computação Quântica">
+        <p>
+            Nos últimos anos, a computação quântica e a criptografia quântica estão transformando o modo como processamos informações e garantimos a segurança digital. Esses avanços tecnológicos, com benefícios como a simulação de moléculas complexas e a criação de novos materiais, enfrentam desafios como a instabilidade dos qubits e os altos custos de infraestrutura.
+        </p>
+        <p>
+            <strong>Computação Quântica: Novas Possibilidades</strong><br>
+            A computação quântica, baseada nos princípios de superposição e entrelaçamento quântico, permite que qubits processem informações de forma exponencialmente maior que os bits tradicionais. Empresas como IBM e Google já estão explorando essas capacidades em áreas como medicina e ciência dos materiais, com destaque para a simulação de interações moleculares.
+        </p>
+        <p>
+            <strong>Criptografia Pós-Quântica: Proteção para o Futuro</strong><br>
+            Com a iminente ameaça dos computadores quânticos, que podem quebrar métodos clássicos de criptografia, a criptografia pós-quântica se tornou essencial. Algoritmos como Kyber e Dilithium, selecionados pelo NIST, estão sendo adotados por empresas e governos para garantir segurança contra ataques futuros.
+        </p>
+        <p>
+            <strong>Criptografia Quântica: Segurança Inviolável</strong><br>
+            A criptografia quântica, como a Distribuição Quântica de Chaves (QKD), promete comunicações à prova de intercepção. Um exemplo notável é o satélite Micius, da China, que possibilitou a troca segura de informações entre cidades distantes.
+        </p>
+        <p>
+            Apesar dos desafios, como a necessidade de padronização e o alto consumo de energia, o futuro da computação quântica e criptografia quântica promete revolucionar áreas como segurança digital, ciência e saúde, tornando a era da informação cada vez mais segura e eficiente.
+        </p>
+        <p>
+            À medida que essas tecnologias avançam, elas moldarão o futuro da segurança digital e a maneira como lidamos com informações em um mundo altamente conectado.
+        </p>
+    </div>
+</div>
+
+<!-- Modal do segundo card -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>"Trilema energético" é desafio global e Brasil pode ser parte da solução</h2>
+        <img src="https://www.estudarfora.org.br/wp-content/uploads/2017/10/FE-EF-30.jpg" alt="Imagem Trilema Energético">
+        <p>
+            Hans Kobler, fundador da Energy Impact Partners, destacou o papel do Brasil na transição energética global durante o evento Bloomberg New Economy, realizado em 23 de outubro em São Paulo. Segundo Kobler, países emergentes, como o Brasil, têm a oportunidade de impulsionar a descarbonização global, especialmente na adoção de tecnologias inovadoras.
+        </p>
+        <p>
+            Kobler enfatizou que diversificar fontes de energia é essencial para reduzir as emissões de carbono. Ele mencionou o potencial de investimentos em energia eólica, solar, geotérmica e nuclear, além da eletrificação de processos industriais e transportes. O Brasil, com seus vastos recursos naturais, pode se tornar um líder na implementação dessas soluções.
+        </p>
+        <p>
+            <strong>Trilema Energético</strong><br>
+            O executivo também falou sobre o "trilema energético", que envolve a busca por segurança energética, sustentabilidade ambiental e acessibilidade econômica, desafios que demandam grandes investimentos — entre US$ 90 e 150 trilhões, segundo estimativas da McKinsey. Kobler acredita que a inovação e a colaboração entre setores são fundamentais para superar esses obstáculos.
+        </p>
+        <p>
+            Com a crescente necessidade de ações contra as mudanças climáticas, o Brasil tem uma oportunidade única de liderar a transição energética global, contribuindo para um futuro mais sustentável.
+        </p>
+    </div>
+</div>
+   
+
+<div class="container">
+    <!-- Seção Guerra dos Chips, Energia Nuclear e "Treta Musical" (com 3 cards) -->
+    <h2 class="section-title">Guerra dos Chips, Energia Nuclear e "Treta Musical"</h2>
+    <div class="main-section">
+        <div class="card" id="card1">
+            <img src="https://img.odcdn.com.br/wp-content/uploads/2024/03/chips-1024x576.png" alt="Imagem Impressão 3D de Chips">
+            <h2>Impressão 3D de chips pode revolucionar a indústria de eletrônicos</h2>
+        </div>
+
+        <div class="card" id="card2">
+            <img src="https://img.odcdn.com.br/wp-content/uploads/2024/10/vecteezy_aerial-view-of-nuclear-power-plant-with-smoking-chimneys-at_25501261-1-2048x1365.jpg" alt="Imagem Energia Nuclear">
+            <h2>IA faz big techs apostarem na energia nuclear</h2>
+        </div>
+
+        <div class="card" id="card3">
+            <img src="https://img.odcdn.com.br/wp-content/uploads/2024/06/ia-musica-1920x1080.jpg" alt="Imagem Treta Musical">
+            <h2>Ferramenta “envenena” músicas para barrar cópias por IA generativa</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Modal do primeiro card -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Impressão 3D de chips pode revolucionar a indústria de eletrônicos</h2>
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/03/chips-1024x576.png" alt="Imagem Impressão 3D de Chips">
+        <p>
+            Pesquisadores do MIT fizeram uma descoberta que pode transformar a produção de chips semicondutores usando impressão 3D, um avanço que poderia mudar a indústria de eletrônicos. Tradicionalmente, a fabricação de chips requer silício puro e ambientes altamente controlados, tornando o processo caro e complexo. No entanto, os cientistas observaram que um material impresso com nanopartículas de cobre demonstrou comportamento semelhante ao dos semicondutores, permitindo a criação de transistores sem o uso de silício.
+        </p>
+        <p>
+            <strong>Implicações da descoberta</strong><br>
+            Embora os componentes impressos ainda não tenham o desempenho dos chips tradicionais usados em dispositivos avançados, a tecnologia abre novas possibilidades, como a produção de chips simples, duráveis e baratos. Eles podem ser aplicados em interruptores, motores e circuitos integrados para tarefas mais básicas. Além disso, o material utilizado é biodegradável e não exige salas controladas para ser fabricado, tornando o processo mais acessível.
+        </p>
+        <p>
+            Essa inovação pode não encerrar a "guerra dos chips" imediatamente, mas oferece um caminho promissor para futuras aplicações, aumentando o alcance da impressão 3D na produção de eletrônicos.
+        </p>
+    </div>
+</div>
+
+<!-- Modal do segundo card -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>IA faz big techs apostarem na energia nuclear</h2>
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/10/vecteezy_aerial-view-of-nuclear-power-plant-with-smoking-chimneys-at_25501261-1-2048x1365.jpg" alt="Imagem Energia Nuclear">
+        <p>
+            O avanço da inteligência artificial (IA) está impulsionando big techs como Google, Amazon e Microsoft a reconsiderarem o uso da energia nuclear como solução para alimentar seus data centers, devido à crescente demanda por energia e à necessidade de reduzir emissões de carbono. A demanda de energia para data centers nos EUA deve triplicar até 2030, alcançando 80 Gigawatts.
+        </p>
+        <p>
+            Empresas de tecnologia estão investindo em pequenos reatores modulares (SMRs), uma alternativa nuclear mais segura e eficiente. A Microsoft, por exemplo, firmou parceria com a Constellation Energy para reabrir a usina de Three Mile Island, local do maior acidente nuclear nos EUA em 1979, mas que agora passa por reformas e atualizações.
+        </p>
+        <p>
+            <strong>Expansão da energia nuclear nos EUA</strong><br>
+            A energia nuclear já fornece 20% da eletricidade nos EUA, e a expectativa é que essa capacidade triplique até 2050, especialmente com o apoio governamental para atingir metas de emissões líquidas zero. Esse cenário beneficia empresas de tecnologia nuclear e mineradoras de urânio, como Cameco e NexGen, à medida que a demanda por urânio e tecnologias nucleares cresce.
+        </p>
+        <p>
+            A energia nuclear, com a ajuda da IA, está se tornando uma solução viável para atender às crescentes necessidades energéticas das big techs, enquanto contribui para a descarbonização global.
+        </p>
+    </div>
+</div>
+
+<!-- Modal do terceiro card -->
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Ferramenta “envenena” músicas para barrar cópias por IA generativa</h2>
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2024/06/ia-musica-1920x1080.jpg" alt="Imagem Treta Musical">
+        <p>
+            Uma nova ferramenta chamada HarmonyCloak foi desenvolvida para proteger músicas originais contra a replicação por modelos de IA generativa. Similar a tecnologias como o Glaze, que protege imagens, o HarmonyCloak adiciona ruídos às faixas musicais. Esses ruídos são indetectáveis aos ouvintes humanos, mas interferem no aprendizado dos modelos de IA, dificultando sua capacidade de copiar ou reproduzir as músicas.
+        </p>
+        <p>
+            <strong>Como funciona o HarmonyCloak</strong><br>
+            A ferramenta insere ruídos que se integram à música, impedindo que a IA consiga identificar as partes importantes da trilha sonora. Essa proteção pode ser aplicada antes de os artistas disponibilizarem suas músicas em plataformas de streaming, adicionando uma camada extra de segurança.
+        </p>
+        <p>
+            Além disso, o HarmonyCloak pode ser ajustado para bloquear modelos específicos de IA ou funcionar de maneira mais abrangente, protegendo contra qualquer tecnologia futura que tente replicar as faixas.
+        </p>
+        <p>
+            Com a crescente utilização de IA generativa, o HarmonyCloak oferece aos músicos uma maneira inovadora de preservar a integridade artística de suas obras, prevenindo a exploração por tecnologias emergentes.
+        </p>
+    </div>
+</div>
+
+</div>
+
+
+<footer>
+    <p>&copy; 2024 Boletim Tecnológico</p>
+</footer>
+
+<!-- Modais para cada card -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>IA Claude agora pode controlar seu PC para tarefas específicas</h2>
+        <img src="https://t.ctcdn.com.br/YkSMbHOgwc5_Sukrl9hStKhS26k=/1024x576/smart/i708004.jpeg" alt="Imagem IA Claude">
+        <p>
+            A Anthropic anunciou a nova API do modelo de Inteligência Artificial Claude, introduzida para automatizar tarefas no computador por meio de comandos inseridos pelos usuários. Apresentada em 22 de outubro, a API oferece aos desenvolvedores a capacidade de executar funções como preenchimento automático de formulários, usando dados do computador e da web.
+        </p>
+        <p>
+            A novidade acompanha a atualização do Claude 3.5 Sonnet, que se destaca por melhorias de desempenho, e o lançamento do Claude 3.5 Haiku, focado em maior velocidade. Embora ainda em fase beta, a API promete facilitar a interação com o PC, permitindo que a IA assuma o controle do mouse e teclado para realizar ações automatizadas.
+        </p>
+        <p>
+            <strong>Como funciona a automação</strong><br>
+            Durante uma demonstração, o Claude 3.5 capturou a tela para analisar informações e, em seguida, inseriu dados automaticamente em um formulário. O processo foi descrito em tempo real pelo chatbot, destacando a capacidade de interação avançada do modelo com o sistema operacional.
+        </p>
+        <p>
+            Em testes conduzidos no OSWorld, que avalia o desempenho de IAs em simular ações humanas no computador, o Claude 3.5 Sonnet obteve 14,9% de sucesso na categoria de captura de tela, superando a pontuação de 7,8% do segundo melhor sistema.
+        </p>
+        <p>
+            <strong>Desafios e segurança</strong><br>
+            Apesar dos avanços, a Anthropic reconhece limitações, como a dificuldade em ações como rolar, arrastar e aplicar zoom. A empresa recomenda que os desenvolvedores comecem com tarefas de baixo risco enquanto a tecnologia evolui.
+        </p>
+        <p>
+            Preocupada com segurança, a Anthropic implementou classificadores para monitorar o uso do computador e evitar possíveis abusos, garantindo uma implantação segura dessa inovação.
+        </p>
+    </div>
+</div>
+
+<!-- Modal vazio para outros cards, adicionar o conteúdo quando necessário -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Avanços em IA para diagnóstico de doenças raras</h2>
+        <img src="#" alt="Imagem Genérica IA Médica">
+        <p>Resumo da matéria...</p>
+    </div>
+</div>
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Automação com IA: Impactos no mercado de trabalho</h2>
+        <img src="#" alt="Imagem Genérica Automação IA">
+        <p>Resumo da matéria...</p>
+    </div>
+</div>
+
+<div id="modal4" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Cibersegurança: Aumento de ataques digitais</h2>
+        <img src="#" alt="Imagem Genérica Cibersegurança">
+        <p>Resumo da matéria...</p>
+    </div>
+</div>
+
+<!-- Outros modais podem ser adicionados conforme necessário -->
+
+<!-- Scripts para Modais -->
+<script>
+    // Função para abrir e fechar os modais
+    const cards = document.querySelectorAll('.card');
+    const modals = document.querySelectorAll('.modal');
+    const closes = document.querySelectorAll('.close');
+
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            modals[index].style.display = 'block';
+        });
+    });
+
+    closes.forEach((close, index) => {
+        close.addEventListener('click', () => {
+            modals[index].style.display = 'none';
+        });
+    });
+
+    window.onclick = function(event) {
+        modals.forEach(modal => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
