@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -40,7 +41,6 @@ header h1 {
     color: #666;
     margin: 15px 0; /* Espaçamento entre o cabeçalho e a primeira seção */
 }
-
 
 .section-title {
     color: #333;
@@ -201,8 +201,24 @@ footer p {
         font-size: 28px;
     }
 
+    /* Aumenta o tamanho do modal em dispositivos móveis */
     .modal-content {
-        width: 90%;
+        width: 95%; /* Ajuste a largura do modal para ocupar quase toda a tela */
+        height: 90%; /* Aumenta a altura do modal para 90% da tela */
+        padding: 15px; /* Reduz o padding para melhor aproveitamento do espaço */
+    }
+
+    .modal-content img {
+        width: 100%; /* Garante que a imagem ocupe toda a largura disponível */
+        height: auto;
+    }
+
+    .modal-content h2 {
+        font-size: 20px; /* Ajuste do tamanho do título para dispositivos móveis */
+    }
+
+    .modal-content p {
+        font-size: 14px; /* Ajuste do tamanho do texto para melhor leitura */
     }
 }
 
